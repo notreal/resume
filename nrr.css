@@ -1,0 +1,70 @@
+body {
+    font-family: sans;
+}
+.section {
+    width: 1000px;
+}
+#header-main {
+    width: 67%;
+    float: left;
+}
+#name {
+    font-size: 44px;
+}
+#header-sub {
+    width: 33%;
+    float: left;
+    display: table;
+}
+.header-sub-line {
+    display: table-row;
+    text-align: right;
+}
+#viz {
+    page-break-after: always;
+}
+#timeline-div {
+    float: left;
+}
+#timeline {
+    width: 500px;
+    height: 800px;
+}
+#skills-div {
+    float: left;
+}
+#skills {
+    width: 500px;
+    height: 800px;
+}
+.timeline-emp {
+    fill: #adf;
+    stroke: black;
+    stroke-width: 1;
+}
+.timeline-edu {
+    fill: #fff;
+    stroke: black;
+    stroke-width: 2;
+}
+.timeline-title {
+    font-weight: bold;
+    font-size: 10px;
+}
+.timeline-title-sm {
+    font-weight: bold;
+    font-size: 8px;
+}
+.timeline-title-lg {
+    font-weight: bold;
+    font-size: 16px;
+}
+.timeline-subtitle {
+    font-size: 8px;
+}
+.timeline-subtitle-sm {
+    font-size: 6px;
+}
+.timeline-subtitle-lg {
+    font-size: 14px;
+}

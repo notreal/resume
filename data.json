@@ -1,0 +1,119 @@
+{
+"timeline": [
+    {
+        "type": "employment",
+        "title": "Amazon",
+        "subtitle": "Data Engineer",
+        "start": "2015-11-01",
+        "end": "2017-05-01",
+        "displayWidth": 3,
+        "text": "Developed multiple interactive web dashboards [Flask, D3.js, MySQL, Pandas]. Deduplicated effort by creating reusable ETL app, data mart & web stack. Introduced unit & integration tests to team applications. [PyTest]. Advised other teams on data architecture. Engaged users throughout project lifetime."
+    },{
+        "type": "employment",
+        "title": "Invodo",
+        "subtitle": "Data Engineer",
+        "start": "2013-08-01",
+        "end": "2015-11-01",
+        "displayWidth": 3,
+        "text": "Responsible for maintaining entire analytics pipeline. [Postgres, PL/pgSQL, BASH, TCL]. Led design and implementation of more scalable pipeline. [Python, Redshift]. Found and fixed bugs. Delivered custom reports. Answered questions from non-technical team members."
+    },{
+        "type": "employment",
+        "title": "AT&T",
+        "subtitle": "Application Developer",
+        "start": "2010-10-01",
+        "end": "2013-08-01",
+        "displayWidth": 3,
+        "text": "Developed robust, efficient PL/SQL scripts to fix bugs & implement new features. Designed, enhanced and implemented stored procedures and packages. Tested my own code and reviewed other developer\"s. Assisted QA & other developers. Coordinated creating a new dev environment with dozens of servers."
+    },{
+        "type": "employment",
+        "title": "AT&T",
+        "subtitle": "Quality Assurance Engineer",
+        "start": "2008-10-01",
+        "end": "2010-10-01",
+        "displayWidth": 3,
+        "text": "Designed & implemented test cases for complex multi-server environment. Investigated causes of defects. Automated repetitive tasks. Suggested process improvements to management. Interviewed candidates. Mentored junior members. Documented institutional knowledge."
+    },{
+        "type": "employment",
+        "title": "Wayport",
+        "subtitle": "Network Operation Engineer 2",
+        "start": "2007-03-01",
+        "end": "2008-10-01",
+        "displayWidth": 3,
+        "text": "Supported and repaired servers, networks, and business applications for hospitality, retail, and other clients. Managed outages, escalating when necessary. Troubleshot to resolve chronic and immediate issues. Coordinated with customers, vendors, peers, and management to meet goals quickly & effectively."
+    },{
+        "type": "employment",
+         "title": "Keller Williams Realty",
+        "subtitle": "Technology Coordinator",
+        "start": "2006-06-01",
+        "end": "2007-03-01",
+        "displayWidth": 3,
+        "text": "Responsible for assisting agents in anything technical. Maintained the office\"s infrastructure including phone system, copiers, faxes, printers, the network, computers, thin clients, Active Directory, fax-to-email server, and email server."
+    },{
+        "type": "employment",
+        "title": "Time Warner Cable",
+        "subtitle": "Technical Support Agent",
+        "start": "2005-08-01",
+        "end": "2006-05-01",
+        "displayWidth": 1,
+        "text": "Cable, broadband, and phone troubleshooting and customer service in a fast-paced call center environment."
+    },{
+        "type": "employment",
+        "title": "Century Alpha ISP",
+        "subtitle": "Network Administrator",
+        "start": "2004-08-01",
+        "end": "2005-02-01",
+        "displayWidth": 1,
+        "text": "Web, email, DNS, and RADIUS server administration for small ISP. Security incident response & data recovery."
+    },{
+        "type": "education",
+        "title": "Texas State Technical College",
+        "subtitle": "Network Security",
+        "start": "2004-08-01",
+        "end": "2006-05-01",
+        "displayWidth": 1
+    },{
+        "type": "education",
+        "title": "Austin Community College",
+        "subtitle": "Computer Science",
+        "start": "2001-08-01",
+        "end": "2002-05-01",
+        "displayWidth": 3
+    },{
+        "type": "certification",
+        "title": "CompTIA Security+",
+        "start": "2006-01-01",
+        "end": "2006-01-01",
+        "displayWidth": 1
+    },{
+        "type": "certification",
+        "title": "Cisco Certified Network Associate (expired)",
+        "start": "2000-08-01",
+        "end": "2000-08-01",
+        "displayWidth": 3
+    }
+],
+
+"skills": {
+    "Python": 5,
+    "Pandas": 5,
+    "SQL": 5,
+    "ETL / Data Pipelines": 4,
+    "Data Modeling": 4,
+    "Data Analysis": 4,
+    "Software Testing": 4,
+    "Troubleshooting": 4,
+    "Linux": 4,
+    "Web Development": 3,
+    "HTML / CSS": 3,
+    "JavaScript": 3,
+    "D3.js": 3,
+    "AWS": 3,
+    "Documentation": 3,
+    "Written Communication": 3,
+    "Ruby, Bash, TCL, Scala": 2,
+    "Server Administration": 2,
+    "Machine Learning": 1,
+    "Statistics": 1
+}
+}
+
