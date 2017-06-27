@@ -3,7 +3,6 @@
 var nr = {}; // single global to hold everything
 
 function makeDate(dateString) {
-    // cast
     var d = new Date(dateString);
     // ignore timezone
     return new Date(d.getTime() + (d.getTimezoneOffset() * 60000));
@@ -20,7 +19,7 @@ d3.json('data.json', function(error, data) {
     });
 
     drawTimeline();
-    //drawSkills();
+    drawSkills();
 });
 
 function calcBoxOffset(d, width) {
@@ -94,6 +93,16 @@ function drawTimeline() {
         .attr('x', 5)
         .attr('y', d => calcBoxSizes(d)[2])
         .text(d => d.subtitle);
-
 }
 
+function drawSkills() {
+    var skills = Object.keys(nr.skills).map(function(x) { return { 'skill': x, 'level': nr.skills[x] } });
+    var width = 500;
+    var skillsDiv = d3.select('#skills');
+    skillsDiv.selectAll('div')
+        .data(skills).enter()
+        .append('div')
+        .text(d => d.skill)
+        .attr('class', d => 'skill skill' + d.level)
+        .style('width', d => width / 5 * d.level );
+}
