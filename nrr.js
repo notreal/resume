@@ -1,6 +1,10 @@
 'use strict';
 
-var nr = {}; // single global to hold everything
+var nr = {
+    'width': 500,
+    'height': 800,
+    'axisWidth': 32
+}; // single global to hold everything
 
 function makeDate(dateString) {
     var d = new Date(dateString);
@@ -10,7 +14,8 @@ function makeDate(dateString) {
 
 d3.json('data.json', function(error, data) { 
     if (error) throw error;
-    nr = data; 
+    nr.timeline = data.timeline;
+    nr.skills = data.skills; 
 
     // cast dates
     nr.timeline.forEach(function(d) {
@@ -22,15 +27,15 @@ d3.json('data.json', function(error, data) {
     drawSkills();
 });
 
-function calcBoxOffset(d, width) {
-    if (d.displayWidth == 3) { return 1; };
+function calcBoxOffset(d) {
+    if (d.displayWidth == 3) { return nr.axisWidth; };
     // no width=2
     if (d.type == 'employment') {
-        return 2 * width / 3;
+        return 2/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
     } else if (d.type == 'education') {
-        return width / 3;
+        return 1/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
     } else {
-        return 1;
+        return nr.axisWidth;
     }
 }
 
@@ -45,31 +50,22 @@ function calcBoxSizes(d) {
 }
 
 function drawTimeline() {
-    var width = 500,
-        axisWidth = 32,
-        innerWidth = width - axisWidth,
-        height = 800;
-    var minDate = d3.min(nr.timeline.map(d => d.start)),
-        maxDate = d3.max(nr.timeline.map(d => d.end));
+    var innerWidth = nr.width - nr.axisWidth,
+        minDate = d3.min(nr.timeline.map(d => d.start)),
+        maxDate = d3.max(nr.timeline.map(d => d.end)),
+        svg = d3.select('#timeline');
 
-    // draw axis
     nr.yScale = d3.scaleTime()
         .domain([maxDate, minDate])
-        .range([0, height]);
-    var yAxis = d3.axisLeft(nr.yScale)
-        .ticks(d3.timeYear.every(1));
-    var svg = d3.select('#timeline');
-    svg.append('g')
-        .attr('transform', 'translate(' + width + ',0)')
-        .call(yAxis);
-    
+        .range([0, nr.height]);
+
     // draw boxes
-    var timeline = svg.selectAll('g.not-axis')
+    var timeline = svg.selectAll('g')
         .data(nr.timeline).enter()
         .append('g')
         .attr('transform', function(d) {
-            var x = calcBoxOffset(d, innerWidth);
-            var y = d3.min([nr.yScale(d.end), height - 25]) + 1;
+            var x = calcBoxOffset(d);
+            var y = d3.min([nr.yScale(d.end), nr.height - 25]) + 1;
             return 'translate(' + x + ',' + y + ')';
         });
     
@@ -79,6 +75,7 @@ function drawTimeline() {
         .attr('rx', 8).attr('ry', 8)
         .attr('class', d => d.type == 'employment' ? 'timeline-emp' : 'timeline-edu');
 
+    // label boxes
     var empText = timeline.append('text')
         .attr('class', 'timeline-text');
 
@@ -93,16 +90,24 @@ function drawTimeline() {
         .attr('x', 5)
         .attr('y', d => calcBoxSizes(d)[2])
         .text(d => d.subtitle);
+    
+    // draw axis
+    var yAxis = d3.axisRight(nr.yScale)
+        .ticks(d3.timeYear.every(1))
+        .tickSize(0);
+    svg.append('g').call(yAxis);
+    // remove unnecessary vertical line
+    svg.selectAll('path.domain').remove();
 }
 
 function drawSkills() {
     var skills = Object.keys(nr.skills).map(function(x) { return { 'skill': x, 'level': nr.skills[x] } });
-    var width = 500;
     var skillsDiv = d3.select('#skills');
+    var vizGap = 16;
     skillsDiv.selectAll('div')
         .data(skills).enter()
         .append('div')
         .text(d => d.skill)
         .attr('class', d => 'skill skill' + d.level)
-        .style('width', d => width / 5 * d.level );
+        .style('width', d => (nr.width - vizGap) / 5 * d.level );
 }

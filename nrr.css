@@ -38,10 +38,9 @@ body {
     height: 800px;
     float: left;
     text-align: right;
-
 }
 .timeline-emp {
-    fill: #adf;
+    fill: #cef;
     stroke: black;
     stroke-width: 1;
 }
@@ -72,12 +71,13 @@ body {
     font-size: 14px;
 }
 .skill {
-    border-bottom-style: solid;
-    border-right-style: solid;
+    border-style: solid;
     border-radius: 5px;
-    margin-bottom: 10px;
+    border-width: 1px;
+    margin-bottom: 6px;
     margin-left: 10px;
     padding-right: 4px;
+    background-color: #dfd;
 }
 .skill1 {
     font-size: 10px;
