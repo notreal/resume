@@ -1,7 +1,7 @@
 body {
     font-family: sans;
 }
-.section {
+header.section {
     width: 1000px;
     height: 120px;
 }
@@ -21,6 +21,10 @@ body {
     display: table-row;
     text-align: right;
 }
+#summary {
+    width: 1000px;
+    height: 100px;
+}
 #summary div {
     width: 500px;
     height: 90px;
@@ -29,6 +33,7 @@ body {
 }
 #viz {
     page-break-after: always;
+    height: 850px;
 }
 #timeline-div {
     float: left;
@@ -111,4 +116,25 @@ body {
     font-size: 28px;
     font-weight: 900;
     height: 32px;
+}
+.subtle {
+    font-weight: lighter;
+}
+h2 {
+    margin: 40 0 10 0;
+}
+h4 {
+    margin: 20 0 5 0;
+}
+.experienceDetails p {
+    margin: 0 20 0 20;
+}
+footer {
+    margin-top: 50px;
+    font-size: 18;
+}
+.vizTitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
 }
