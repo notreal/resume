@@ -23,7 +23,7 @@
         "start": "2010-10-01",
         "end": "2013-08-01",
         "displayWidth": 3,
-        "text": "Developed robust, efficient PL/SQL scripts to fix bugs & implement new features. Designed, enhanced and implemented stored procedures and packages. Tested my own code and reviewed other developer\"s. Assisted QA & other developers. Coordinated creating a new dev environment with dozens of servers."
+        "text": "Developed robust, efficient PL/SQL scripts to fix bugs & implement new features. Designed, enhanced and implemented stored procedures and packages. Tested my own code and reviewed other developer's. Assisted QA & other developers. Coordinated creating a new dev environment with dozens of servers."
     },{
         "type": "employment",
         "title": "AT&T",
@@ -109,6 +109,7 @@
     "JavaScript": 3,
     "D3.js": 3,
     "AWS": 3,
+    "Git": 3,
     "Documentation": 3,
     "Ruby, Bash, TCL, Scala": 2,
     "Server Administration": 2,
