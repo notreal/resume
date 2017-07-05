@@ -6,12 +6,6 @@ var nr = {
     'axisWidth': 32
 }; // single global to hold everything
 
-function makeDate(dateString) {
-    var d = new Date(dateString);
-    // ignore timezone
-    return new Date(d.getTime() + (d.getTimezoneOffset() * 60000));
-}
-
 d3.json('data.json', function(error, data) { 
     if (error) throw error;
     nr.timeline = data.timeline;
@@ -28,45 +22,11 @@ d3.json('data.json', function(error, data) {
     drawDetails();
 });
 
-function calcBoxOffset(d) {
-    if (d.displayWidth == 3) { return nr.axisWidth; };
-    // no width=2
-    if (d.type == 'employment') {
-        return 2/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
-    } else if (d.type == 'education') {
-        return 1/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
-    } else {
-        return nr.axisWidth;
-    }
-}
-
-function calcBoxSizes(d) {
-    // returns class suffix, title y, subtitle y
-    if (d.type == 'certification') { 
-        return ['', 15, 28] 
-    };
-    var h = nr.yScale(d.start) - nr.yScale(d.end);
-    if (d.displayWidth == 3 && h > 38) { 
-        return ['-lg', 20, 40] 
-    };
-    if (h < 34) { 
-        return ['-sm', 11, 20] 
-    };
-    if (d.title.length > 26 || d.subtitle.length > 30 ) { 
-        return ['-sm', 11, 20] 
-    };
-    return ['', 15, 28];
-}
-
 function drawTimeline() {
     var innerWidth = nr.width - nr.axisWidth,
         minDate = d3.min(nr.timeline.map(d => d.start)),
         maxDate = d3.max(nr.timeline.map(d => d.end)),
         svg = d3.select('#timeline');
-    d3.select('#timeline-div')
-        .insert('header', 'svg')
-        .attr('class', 'vizTitle')
-        .text('Timeline');
     nr.yScale = d3.scaleTime().domain([maxDate, minDate]).range([0, nr.height]);
 
     // draw boxes
@@ -107,23 +67,16 @@ function drawTimeline() {
 }
 
 function drawSkills() {
+    // d3 expects data as array, so transform here
     var skills = Object.keys(nr.skills).map(function(x) { return { 'skill': x, 'level': nr.skills[x] } });
-    var skillsDiv = d3.select('#skills');
-    skillsDiv.append('header')
-        .attr('class', 'vizTitle')
-        .text('Skills');
+    // can't afford to take space from timeline, so imperceptibly off-center viz section
     var vizGap = 16;
-    skillsDiv.selectAll('div')
+    d3.select('#skills').selectAll('div')
         .data(skills).enter()
         .append('div')
         .text(d => d.skill)
         .attr('class', d => 'skill skill' + d.level)
         .style('width', d => (nr.width - vizGap) / 5 * d.level );
-}
-
-function formatDate(date) {
-    var month = String("00" + (1 + date.getMonth())).slice(-2);
-    return date.getFullYear() + '-' + month;
 }
 
 function drawDetails() {
@@ -162,4 +115,47 @@ function drawDetails() {
         .attr('class', 'experienceDetails certDetails');
     certDivs.append('h4').html(d => d.title + ' on ' + formatDate(d.start));
 
+}
+
+// helpers below
+
+function makeDate(dateString) {
+    var d = new Date(dateString);
+    // dates are rounded to month, compensate for browser timezone adjustment
+    return new Date(d.getTime() + (d.getTimezoneOffset() * 60000));
+}
+
+function formatDate(date) {
+    var month = String("00" + (1 + date.getMonth())).slice(-2);
+    return date.getFullYear() + '-' + month;
+}
+
+function calcBoxOffset(d) {
+    if (d.displayWidth == 3) { return nr.axisWidth; };
+    // no width=2
+    if (d.type == 'employment') {
+        return 2/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
+    } else if (d.type == 'education') {
+        return 1/3 * (nr.width - nr.axisWidth) + nr.axisWidth;
+    } else {
+        return nr.axisWidth;
+    }
+}
+
+function calcBoxSizes(d) {
+    // returns class suffix, title y, subtitle y
+    if (d.type == 'certification') { 
+        return ['', 15, 28] 
+    };
+    var h = nr.yScale(d.start) - nr.yScale(d.end);
+    if (d.displayWidth == 3 && h > 38) { 
+        return ['-lg', 20, 40] 
+    };
+    if (h < 34) { 
+        return ['-sm', 11, 20] 
+    };
+    if (d.title.length > 26 || d.subtitle.length > 30 ) { 
+        return ['-sm', 11, 20] 
+    };
+    return ['', 15, 28];
 }

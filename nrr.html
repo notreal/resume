@@ -2,35 +2,40 @@
 <head>
     <title>Nick Rains Resume</title>
     <link rel='stylesheet' href='nrr.css'> 
-    <script src="d3.v4.min.js"></script>
-    <script src="nrr.js"></script>
+    <script src='d3.v4.min.js'></script>
+    <script src='nrr.js'></script>
 </head>
 <body>
-<header class='section'>
+<header id='top'>
     <div id='header-main'>
         <span id='name'>Nick Rains</span>
     </div>
     <div id='header-sub'>
-        <span id='phone' class='header-sub-line'>512-963-9316</span>
-        <span id='email' class='header-sub-line'>
-            <a href="mailto:nnotreall@gmail.com">nnotreall@gmail.com</a>
+        <span class='header-sub-line'>512-963-9316</span>
+        <span class='header-sub-line'>
+            <a href='mailto:nnotreall@gmail.com'>nnotreall@gmail.com</a>
         </span>
-        <span id='web' class='header-sub-line'>
+        <span class='header-sub-line'>
             <a href='http://github.com/notreal/resume'>github.com/notreal/resume</a>
         </span>
     </div>
 </header>
 
-<section id='summary' class='section'>
-    <div>Highly adaptable communicator finds joy in solving problems and designing systems. Strong database and coding experience support learning new skills.</div>
+<section id='summary'>
+    <div>Highly adaptable communicator finds joy in solving problems and designing systems. Strong database and coding experience complement continuous learning.</div>
 </section>
 
-<section id='viz' class='section'>
-    <div id='timeline-div'><svg id='timeline'/></div>
-    <div id='skills'></div>
+<section id='viz'>
+    <div id='timeline-div'>
+        <header class='vizTitle'>Timeline</header>
+        <svg id='timeline'/>
+    </div>
+    <div id='skills'>
+        <header class='vizTitle'>Skills</header>
+    </div>
 </section>
 
-<section id='details' class='section'></section>
+<section id='details'></section>
 
 <footer>References available upon request</footer>
 </body>

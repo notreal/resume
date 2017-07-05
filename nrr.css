@@ -1,7 +1,7 @@
 body {
     font-family: sans;
 }
-header.section {
+#top {
     width: 1000px;
     height: 120px;
 }
@@ -41,9 +41,6 @@ header.section {
 #timeline {
     width: 500px;
     height: 800px;
-}
-#skills-div {
-    float: left;
 }
 #skills {
     width: 500px;
